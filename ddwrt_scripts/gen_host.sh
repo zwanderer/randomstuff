@@ -165,7 +165,7 @@ for URL in "http://winhelp2002.mvps.org/hosts.txt" \
            "http://www.malwaredomainlist.com/hostslist/hosts.txt" \
            "https://raw.githubusercontent.com/notracking/hosts-blocklists/master/hostnames.txt" \
            "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext" \
-           "https://raw.githubusercontent.com/ZeroDot1/CoinBlockerLists/master/hosts" \
+           "https://gitlab.com/ZeroDot1/CoinBlockerLists/raw/master/hosts" \
            "https://raw.githubusercontent.com/lewisje/jansal/master/adblock/hosts" \
            "https://zeustracker.abuse.ch/blocklist.php?download=hostfile" \
            "https://hosts-file.net/ad_servers.txt" \
@@ -320,7 +320,7 @@ if [ $ANY_IP_DOWNLOAD != 0 ]; then
 
   logger "gen_host: Generated `wc -l < /tmp/gen_ip.txt` IP entries. Creating firewall rules..."
 
-  /jffs/ipset_setup.sh
+  /jffs/ipset_setup.sh $$
 fi
 
 rm /tmp/gen_host.lck

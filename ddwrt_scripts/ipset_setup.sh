@@ -3,6 +3,14 @@
 export PATH='/bin:/usr/bin:/sbin:/usr/sbin:/jffs/sbin:/jffs/bin:/jffs/usr/sbin:/jffs/usr/bin:/mmc/sbin:/mmc/bin:/mmc/usr/sbin:/mmc/usr/bin:/opt/sbin:/opt/bin:/opt/usr/sbin:/opt/usr/bin'
 export LD_LIBRARY_PATH='/lib:/usr/lib:/jffs/lib:/jffs/usr/lib:/jffs/usr/local/lib:/mmc/lib:/mmc/usr/lib:/opt/lib:/opt/usr/lib'
 
+if [ -f /tmp/gen_host.lck ]; then
+  read -r OWNER < /tmp/gen_host.lck
+  if [ $# -lt 1 ] || [ "$OWNER" != "$1" ]; then
+    logger "ipset_setup: Another instance of gen_host.sh is running, quitting..."
+    exit 1
+  fi
+fi
+
 sleep 5
 
 lsmod | grep xt_set >/dev/null
