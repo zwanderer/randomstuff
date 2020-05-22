@@ -10,3 +10,7 @@ do
 done < /jffs/whitelist_hosts.txt
 
 sort -u /tmp/whitelist_ip.tmp | grep "^\d+\.\d+\.\d+\.\d+$" -E > /tmp/whitelist_ip.txt
+
+if [ -f /jffs/whitelist_ips.txt ]; then
+    cat /jffs/whitelist_ips.txt >> /tmp/whitelist_ip.txt
+fi
