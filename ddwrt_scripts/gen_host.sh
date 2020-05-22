@@ -160,6 +160,7 @@ ANY_IP_DOWNLOAD=0
 
 logger "gen_host: Downloading DOMAIN lists..."
 
+# https://raw.githubusercontent.com/evankrob/hosts-filenetrehost/master/ad_servers.txt replaces https://hosts-file.net/ad_servers.txt temporarily, not sure if being updated
 for URL in "http://winhelp2002.mvps.org/hosts.txt" \
            "http://someonewhocares.org/hosts/zero/hosts" \
            "http://www.malwaredomainlist.com/hostslist/hosts.txt" \
@@ -168,15 +169,7 @@ for URL in "http://winhelp2002.mvps.org/hosts.txt" \
            "https://gitlab.com/ZeroDot1/CoinBlockerLists/raw/master/hosts" \
            "https://raw.githubusercontent.com/lewisje/jansal/master/adblock/hosts" \
            "https://zeustracker.abuse.ch/blocklist.php?download=hostfile" \
-           "https://hosts-file.net/ad_servers.txt" \
-           "https://hosts-file.net/exp.txt" \
-           "https://hosts-file.net/emd.txt" \
-           "https://hosts-file.net/grm.txt" \
-           "https://hosts-file.net/fsa.txt" \
-           "https://hosts-file.net/hjk.txt" \
-           "https://hosts-file.net/pha.txt" \
-           "https://hosts-file.net/psh.txt" \
-           "https://hosts-file.net/pup.txt" \
+           "https://raw.githubusercontent.com/evankrob/hosts-filenetrehost/master/ad_servers.txt" \
            "http://mirror1.malwaredomains.com/files/BOOT" \
            "http://malc0de.com/bl/BOOT" \
            "http://www.hostsfile.org/Downloads/hosts.txt"; do
