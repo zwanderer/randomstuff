@@ -161,18 +161,14 @@ ANY_IP_DOWNLOAD=0
 logger "gen_host: Downloading DOMAIN lists..."
 
 # https://raw.githubusercontent.com/evankrob/hosts-filenetrehost/master/ad_servers.txt replaces https://hosts-file.net/ad_servers.txt temporarily, not sure if being updated
-for URL in "http://winhelp2002.mvps.org/hosts.txt" \
-           "http://someonewhocares.org/hosts/zero/hosts" \
-           "http://www.malwaredomainlist.com/hostslist/hosts.txt" \
+for URL in "https://winhelp2002.mvps.org/hosts.txt" \
+           "https://someonewhocares.org/hosts/zero/hosts" \
            "https://raw.githubusercontent.com/notracking/hosts-blocklists/master/hostnames.txt" \
-           "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext" \
+           "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext" \
            "https://gitlab.com/ZeroDot1/CoinBlockerLists/raw/master/hosts" \
            "https://raw.githubusercontent.com/lewisje/jansal/master/adblock/hosts" \
-           "https://zeustracker.abuse.ch/blocklist.php?download=hostfile" \
            "https://raw.githubusercontent.com/evankrob/hosts-filenetrehost/master/ad_servers.txt" \
-           "http://mirror1.malwaredomains.com/files/BOOT" \
-           "http://malc0de.com/bl/BOOT" \
-           "http://www.hostsfile.org/Downloads/hosts.txt"; do
+           "https://www.hostsfile.org/Downloads/hosts.txt"; do
   TEMP_FILE="/tmp/gen_host`echo -n $COUNT`.tmp"
   UID_FILE="/tmp/gen_host.`echo -n "$URL" | md5sum | cut -d " " -f 1`"
   download_file $URL $TEMP_FILE
@@ -225,11 +221,8 @@ for URL in "https://raw.githubusercontent.com/firehol/blocklist-ipsets/master/fi
            "https://raw.githubusercontent.com/firehol/blocklist-ipsets/master/firehol_abusers_30d.netset" \
            "https://raw.githubusercontent.com/firehol/blocklist-ipsets/master/firehol_abusers_1d.netset" \
            "https://raw.githubusercontent.com/firehol/blocklist-ipsets/master/firehol_webclient.netset" \
-           "https://ransomwaretracker.abuse.ch/downloads/RW_IPBL.txt" \
-           "https://zeustracker.abuse.ch/blocklist.php?download=ipblocklist" \
-           "http://malc0de.com/bl/IP_Blacklist.txt" \
-           "http://www.team-cymru.org/Services/Bogons/fullbogons-ipv4.txt" \
-           "http://cinsscore.com/list/ci-badguys.txt" \
+           "https://www.team-cymru.org/Services/Bogons/fullbogons-ipv4.txt" \
+           "https://cinsscore.com/list/ci-badguys.txt" \
            "https://rules.emergingthreats.net/fwrules/emerging-Block-IPs.txt"; do
   TEMP_FILE="/tmp/gen_ip`echo $COUNT`.tmp"
   UID_FILE="/tmp/gen_host.`echo -n "$URL" | md5sum | cut -d " " -f 1`"

@@ -13,7 +13,6 @@
 ADBLOCKLISTS=" \
 https://easylist-downloads.adblockplus.org/easylist.txt \
 https://easylist-downloads.adblockplus.org/easyprivacy.txt \
-https://easylist-downloads.adblockplus.org/adwarefilters.txt \
 https://raw.githubusercontent.com/Dawsey21/Lists/master/adblock-list.txt \
 https://easylist-downloads.adblockplus.org/antiadblockfilters.txt \
 https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt"
@@ -66,7 +65,10 @@ download_file()
         [ -f "$HTTP_CODE" ] && rm "$HTTP_CODE"
 
         # Skip URL after 3 failed attempts...
-        [ $ATTEMPT == 4 ] && debug "Skipping $1 ..." 1 && return 1
+        if [ $ATTEMPT = 4 ]; then
+          debug "gen_host: Skipping $1 ..." 1
+          return 1
+        fi
 
         debug "Downloading $1 (attempt $ATTEMPT)..." 0
         (curl -o "$OUTPUT_FILE" --silent --write-out '%{http_code}' --connect-timeout 90 --max-time 150 --capath $CA_PATH -L "$1" > "$HTTP_CODE") & DOWNLOAD_PID=$!
